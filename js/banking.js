@@ -23,6 +23,13 @@ function balanceField (newDepositAmount, inAdd){
         balanceUpdate.innerText = previousBalance - newDepositAmount;
     }
 }
+// handling error for balanceField :
+function updateCurrentBalance (){
+    const balanceUpdate = document.getElementById('balance-updating');
+    const previousBalanceText = balanceUpdate.innerText;
+    const previousBalance = parseFloat(previousBalanceText);
+    return previousBalance;
+}
 document.getElementById('deposit-btn').addEventListener('click', function(){
    
     const newDepositAmount = getInputValue('deposit-amount');
@@ -35,7 +42,8 @@ document.getElementById('deposit-btn').addEventListener('click', function(){
 document.getElementById('withdraw-btn').addEventListener('click', function(){
     
     const newWithdrawAmount = getInputValue('withdraw-amount');
-    if (newWithdrawAmount > 0){
+    const currentBalance = updateCurrentBalance(); /* for handling eror got this from last function */
+    if (newWithdrawAmount > 0 && newWithdrawAmount < currentBalance){
         textField('withdraw-amount-text', newWithdrawAmount);
         balanceField(newWithdrawAmount, false);
     }

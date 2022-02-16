@@ -47,4 +47,8 @@ document.getElementById('withdraw-btn').addEventListener('click', function(){
         textField('withdraw-amount-text', newWithdrawAmount);
         balanceField(newWithdrawAmount, false);
     }
+    if (newWithdrawAmount > currentBalance){
+        const balanceUpdate = document.getElementById('balance-updating');
+        balanceUpdate.innerText = "You don't have this amount of money";
+    }
 });

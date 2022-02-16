@@ -26,13 +26,17 @@ function balanceField (newDepositAmount, inAdd){
 document.getElementById('deposit-btn').addEventListener('click', function(){
    
     const newDepositAmount = getInputValue('deposit-amount');
-    textField('deposit-amount-text', newDepositAmount);
-    balanceField(newDepositAmount, true);
+    if (newDepositAmount > 0){
+        textField('deposit-amount-text', newDepositAmount);
+        balanceField(newDepositAmount, true);
+    }
 });
 // -------update withdraw------
 document.getElementById('withdraw-btn').addEventListener('click', function(){
     
     const newWithdrawAmount = getInputValue('withdraw-amount');
-    textField('withdraw-amount-text', newWithdrawAmount);
-    balanceField(newWithdrawAmount, false);
+    if (newWithdrawAmount > 0){
+        textField('withdraw-amount-text', newWithdrawAmount);
+        balanceField(newWithdrawAmount, false);
+    }
 });
